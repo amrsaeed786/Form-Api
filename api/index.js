@@ -14,6 +14,8 @@ dotenv.config();
 // Connect to DB  
 connectDB(); // ✅ don't await at top-level
 
+app.set('trust proxy', 1); // Trust first proxy for rate limiting
+
 // Middleware
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
 app.use(cors()); // Enable CORS for all routes
