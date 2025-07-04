@@ -8,7 +8,7 @@ import connectDB from "../config/db.js";
 import userFormRouter from "../routes/userFormRoute.js";
 
 const app = express();
-dotenv.config(); 
+dotenv.config({ silent: true }); 
 
 
 // Connect to DB  
