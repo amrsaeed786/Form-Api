@@ -4,6 +4,7 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit"; 
 import connectDB from "../config/db.js";
 import userFormRouter from "../routes/userFormRoute.js";
+import cors from "cors";
 
 const app = express();
 
@@ -12,6 +13,7 @@ connectDB(); // ✅ don't await at top-level
 
 // Middleware
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
+app.use(cors()); // Enable CORS for all routes
 app.use(helmet()); 
 app.use(morgan("dev"));
 app.use(express.json());
