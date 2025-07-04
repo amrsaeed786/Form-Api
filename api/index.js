@@ -7,7 +7,7 @@ import userFormRouter from "../routes/userFormRoute.js";
 
 const app = express();
 
-// Connect to DB if not connected already
+// Connect to DB  
 connectDB(); // ✅ don't await at top-level
 
 // Middleware
