@@ -7,18 +7,22 @@ import userFormRouter from "../routes/userFormRoute.js";
 
 const app = express();
 
-// Connect to DB (only once in serverless)
-await connectDB();
+// Connect to DB if not connected already
+connectDB(); // ✅ don't await at top-level
 
-// Middlewares
+// Middleware
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
 app.use(helmet()); 
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Test root route (optional)
+app.get("/", (req, res) => {
+  res.send("API root is working ✅");
+});
+
 // Routes
 app.use("/api/v1/users", userFormRouter);
 
-// ✅ Export for Vercel
 export default app;
