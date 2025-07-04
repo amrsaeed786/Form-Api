@@ -2,11 +2,14 @@ import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit"; 
+import cors from "cors";
+import dotenv from "dotenv"; // Load environment variables from .env file
 import connectDB from "../config/db.js";
 import userFormRouter from "../routes/userFormRoute.js";
-import cors from "cors";
 
 const app = express();
+dotenv.config(); 
+
 
 // Connect to DB  
 connectDB(); // ✅ don't await at top-level
