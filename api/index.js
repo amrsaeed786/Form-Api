@@ -1,9 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
-import rateLimit from "express-rate-limit";
-import mongoSanitize from "express-mongo-sanitize";
-import xss from "xss-clean";
+import rateLimit from "express-rate-limit"; 
 import connectDB from "../config/db.js";
 import userFormRouter from "../routes/userFormRoute.js";
 
@@ -14,9 +12,7 @@ await connectDB();
 
 // Middlewares
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
-app.use(helmet());
-app.use(mongoSanitize());
-app.use(xss());
+app.use(helmet()); 
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
