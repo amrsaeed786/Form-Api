@@ -1,14 +1,15 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import colors from "colors";
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
 dotenv.config();
 
 const connectdB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL);
-    console.log(`connected to db ${process.env.MONGO_URL}`.bgCyan.white);
+    if (mongoose.connection.readyState >= 1) return; // avoid reconnecting
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log('MongoDB connected');
   } catch (error) {
-    console.log(error);
+    console.error('MongoDB connection error:', error);
     process.exit(1);
   }
 };
