@@ -3,6 +3,8 @@ import morgan from "morgan";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import mongoSanitize from "express-mongo-sanitize";
+import xss from "xss-clean";
+
 
 import connectdB from "./config/db.js";
 import userFormRouter from "./routes/userFormRoute.js";
