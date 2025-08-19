@@ -96,6 +96,7 @@ export const getFormData = async (req, res) => {
     }
     res.status(200).json({
       message: "Form data retrieved successfully",
+      count: formData.length,
       data: formData,
     });
   } catch (error) {
