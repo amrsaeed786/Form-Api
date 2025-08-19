@@ -86,3 +86,19 @@ export const submitForm = async (req, res) => {
     res.status(500).json({ message: "Server error, please try again later." });
   }
 };
+
+
+export const getFormData = async (req, res) => {
+  try {
+    const formData = await userFormSchema.find();
+    if (!formData || formData.length === 0) {
+      return res.status(404).json({ message: "No form data found." });
+    }
+    res.status(200).json({
+      message: "Form data retrieved successfully",
+      data: formData,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: "Server error, please try again later." });
+  }
+}
