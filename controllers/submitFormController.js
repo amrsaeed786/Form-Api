@@ -19,7 +19,7 @@ export const submitForm = async (req, res) => {
 
     // Email content
     const mailOptions = {
-      from: "info@techwpsolution.me",
+      from: "hafizamirsaeed082@gmail.com",
       to: "hafizamirsaeed082@gmail.com",
       replyTo: yourEmail,
       subject: yourName,
